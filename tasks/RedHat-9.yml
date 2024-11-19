@@ -1,0 +1,23 @@
+---
+
+- name: 'Ensure packages'
+  ansible.builtin.package:
+    name: 'dhcp-server'
+    state: 'present'
+    update_cache: true
+  register: 'dhcp-server_installed'
+
+- name: 'Gather running services'
+  ansible.builtin.service_facts:
+
+- name: 'Ensure firewalld'
+  ansible.posix.firewalld:
+    service: 'dhcp'
+    state: 'enabled'
+    permanent: true
+    immediate: true
+  when:
+    - ansible_facts['services']['firewalld.service']['state'] is defined
+    - ansible_facts['services']['firewalld.service']['state'] == 'running'
+
+...
