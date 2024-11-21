@@ -3,10 +3,10 @@
 #   see /usr/share/doc/dhcp-server/dhcpd.conf.example
 #   see dhcpd.conf(5) man page
 #
-subnet {{ internal_subnet }} netmask {{ internal_netmask }} {
-  range {{ internal_range }};
-  option routers {{ internal_routers }};
-  option domain-name-servers {{ internal_dns }};
-  default-lease-time {{ internal_dlt }};
-  max-lease-time {{ internal_mlt }};
+subnet {{ intsubnet }} netmask {{ intnetmask }} {
+  range {{ intrange }};
+  option routers {{ introuters }};
+  option domain-name-servers {{ intdns }};
+  default-lease-time {{ intdlt }};
+  max-lease-time {{ intmlt }};
 }
